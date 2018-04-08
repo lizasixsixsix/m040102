@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,8 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Elements\CultureElement.cs" />
+    <Compile Include="Elements\DefaultDirectoryElement.cs" />
+    <Compile Include="Elements\DirectoryElement.cs" />
+    <Compile Include="Elements\DirectoryElementCollection.cs" />
+    <Compile Include="Elements\RuleElement.cs" />
+    <Compile Include="Elements\RuleElementCollection.cs" />
     <Compile Include="FileMover.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

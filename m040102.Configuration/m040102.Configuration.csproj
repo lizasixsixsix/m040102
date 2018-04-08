@@ -41,8 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomConfigSection.cs" />
+    <Compile Include="FileMoverConfigSection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\m040102.FileSystem\m040102.FileSystem.csproj">
+      <Project>{fee03ac2-5df8-4310-aac1-b2df5236a4b6}</Project>
+      <Name>m040102.FileSystem</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
