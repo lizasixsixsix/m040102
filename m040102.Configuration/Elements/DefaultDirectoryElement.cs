@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using System.IO;
 
-namespace m040102.FileSystem.Elements
+namespace m040102.Configuration.Elements
 {
     public class DefaultDirectoryElement : ConfigurationElement
     {

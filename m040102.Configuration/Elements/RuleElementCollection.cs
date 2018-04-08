@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace m040102.FileSystem.Elements
+namespace m040102.Configuration.Elements
 {
     [ConfigurationCollection(typeof(RuleElement),
         AddItemName = "rule")]

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace m040102.FileSystem.Elements
+namespace m040102.Configuration.Elements
 {
     public class RuleElement : ConfigurationElement
     {

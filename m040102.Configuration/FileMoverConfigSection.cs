@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-using m040102.FileSystem.Elements;
+using m040102.Configuration.Elements;
 
 namespace m040102.Configuration
 {
