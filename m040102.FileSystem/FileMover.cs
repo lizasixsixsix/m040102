@@ -1,10 +1,8 @@
-﻿using m040102.Extensions;
-using m040102.Logging;
+﻿using m040102.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Text.RegularExpressions;
 
 namespace m040102.FileSystem
@@ -37,8 +35,8 @@ namespace m040102.FileSystem
             this.patternsDictionary = patternsDictionary
                 ?? throw new ArgumentNullException();
 
-            if (this.patternsDictionary.Select(
-                p => p.Value).Any(d => !d.Exists))
+            if (this.patternsDictionary.Select(p => p.Value)
+                .Any(d => !d.Exists))
             {
                 throw new ArgumentException();
             }
@@ -75,11 +73,36 @@ namespace m040102.FileSystem
             //
         }
 
-        public void MoveFile()
+        public void MoveFile(FileInfo file)
         {
+            #region ParametersValidation
+
+            if (file == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (!file.Exists)
+            {
+                throw new ArgumentException();
+            }
+
+            #endregion
+
             try
             {
-                //
+                var match = patternsDictionary.FirstOrDefault(
+                    p => p.Key.IsMatch(file.Name))
+                    .Value;
+
+                var destination = match ?? defaultDirectory;
+
+                if (!destination.Exists)
+                {
+                    destination.Create();
+                }
+
+                file.MoveTo(Path.Combine(destination.FullName, file.Name));
             }
             catch (IOException ex)
             {
