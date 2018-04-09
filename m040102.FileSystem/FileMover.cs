@@ -68,6 +68,22 @@ namespace m040102.FileSystem
             this.logger = logger ?? throw new ArgumentNullException();
         }
 
+        public void StartWatching()
+        {
+            foreach (var w in this.fileSystemWatchers)
+            {
+                w.EnableRaisingEvents = true;
+            }
+        }
+
+        public void StopWatching()
+        {
+            foreach (var w in this.fileSystemWatchers)
+            {
+                w.EnableRaisingEvents = false;
+            }
+        }
+
         private void OnCreated(object sender, FileSystemEventArgs e)
         {
             this.MoveFile(e.FullPath);
