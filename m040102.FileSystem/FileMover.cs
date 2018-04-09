@@ -70,27 +70,15 @@ namespace m040102.FileSystem
 
         private void OnCreated(object sender, FileSystemEventArgs e)
         {
-            //
+            this.MoveFile(e.FullPath);
         }
 
-        public void MoveFile(FileInfo file)
+        private void MoveFile(string fileName)
         {
-            #region ParametersValidation
-
-            if (file == null)
-            {
-                throw new ArgumentNullException();
-            }
-
-            if (!file.Exists)
-            {
-                throw new ArgumentException();
-            }
-
-            #endregion
-
             try
             {
+                var file = new FileInfo(fileName);
+
                 var match = patternsDictionary.FirstOrDefault(
                     p => p.Key.IsMatch(file.Name))
                     .Value;
