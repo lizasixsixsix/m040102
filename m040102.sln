@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "m040102.Configuration", "m0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "m040102.FileSystem", "m040102.FileSystem\m040102.FileSystem.csproj", "{FEE03AC2-5DF8-4310-AAC1-B2DF5236A4B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "m040102.Logging", "m040102.Logging\m040102.Logging.csproj", "{023177F4-D90B-451D-B492-5DD2B3CC07F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{FEE03AC2-5DF8-4310-AAC1-B2DF5236A4B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEE03AC2-5DF8-4310-AAC1-B2DF5236A4B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEE03AC2-5DF8-4310-AAC1-B2DF5236A4B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{023177F4-D90B-451D-B492-5DD2B3CC07F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{023177F4-D90B-451D-B492-5DD2B3CC07F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{023177F4-D90B-451D-B492-5DD2B3CC07F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{023177F4-D90B-451D-B492-5DD2B3CC07F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

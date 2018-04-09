@@ -1,7 +1,10 @@
-﻿using System;
+﻿using m040102.Extensions;
+using m040102.Logging;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text.RegularExpressions;
 
 namespace m040102.FileSystem
@@ -14,9 +17,12 @@ namespace m040102.FileSystem
 
         private readonly IList<FileSystemWatcher> fileSystemWatchers;
 
+        private readonly Logger logger;
+
         public FileMover(IEnumerable<DirectoryInfo> directories,
                          IReadOnlyDictionary<Regex, DirectoryInfo> patternsDictionary,
-                         DirectoryInfo defaultDirectory)
+                         DirectoryInfo defaultDirectory,
+                         Logger logger)
         {
 
             #region ParametersValidation
@@ -28,14 +34,17 @@ namespace m040102.FileSystem
                 throw new ArgumentException();
             }
 
-            this.patternsDictionary = patternsDictionary ?? throw new ArgumentNullException();
+            this.patternsDictionary = patternsDictionary
+                ?? throw new ArgumentNullException();
 
-            if (this.patternsDictionary.Select(p => p.Value).Any(d => !d.Exists))
+            if (this.patternsDictionary.Select(
+                p => p.Value).Any(d => !d.Exists))
             {
                 throw new ArgumentException();
             }
 
-            this.defaultDirectory = defaultDirectory ?? throw new ArgumentNullException();
+            this.defaultDirectory = defaultDirectory
+                ?? throw new ArgumentNullException();
 
             if (!this.defaultDirectory.Exists)
             {
@@ -46,7 +55,36 @@ namespace m040102.FileSystem
 
             this.fileSystemWatchers = new List<FileSystemWatcher>(
                 this.directories.Select(
-                    d => new FileSystemWatcher(d.FullName)));
+                    d =>
+                    {
+                        var w = new FileSystemWatcher(d.FullName)
+                        {
+                            IncludeSubdirectories = true,
+                        };
+
+                        w.Created += this.OnCreated;
+
+                        return w;
+                    }));
+
+            this.logger = logger ?? throw new ArgumentNullException();
+        }
+
+        private void OnCreated(object sender, FileSystemEventArgs e)
+        {
+            //
+        }
+
+        public void MoveFile()
+        {
+            try
+            {
+                //
+            }
+            catch (IOException ex)
+            {
+                this.logger.Log(ex.Message);
+            }
         }
     }
 }
