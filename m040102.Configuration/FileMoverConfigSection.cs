@@ -12,7 +12,7 @@ namespace m040102.Configuration
             (CultureElement)this["culture"];
 
         [ConfigurationProperty("directories")]
-        public DirectoryElementCollection ListenDirectories
+        public DirectoryElementCollection Directories
             =>
             (DirectoryElementCollection)base["directories"];
 

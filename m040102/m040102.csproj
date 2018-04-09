@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -59,6 +60,20 @@
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Strings.ru-RU.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\m040102.Configuration\m040102.Configuration.csproj">
+      <Project>{600a03a0-2c84-4b73-82d5-2380fb513f71}</Project>
+      <Name>m040102.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\m040102.FileSystem\m040102.FileSystem.csproj">
+      <Project>{fee03ac2-5df8-4310-aac1-b2df5236a4b6}</Project>
+      <Name>m040102.FileSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\m040102.Logging\m040102.Logging.csproj">
+      <Project>{023177f4-d90b-451d-b492-5dd2b3cc07f3}</Project>
+      <Name>m040102.Logging</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

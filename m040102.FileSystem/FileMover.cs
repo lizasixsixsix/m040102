@@ -10,8 +10,9 @@ namespace m040102.FileSystem
     public class FileMover
     {
         private readonly IEnumerable<DirectoryInfo> directories;
-        private readonly IReadOnlyDictionary<Regex, DirectoryInfo> patternsDictionary;
         private readonly DirectoryInfo defaultDirectory;
+
+        private readonly IReadOnlyDictionary<Regex, DirectoryInfo> patternDictionary;
 
         private readonly IList<FileSystemWatcher> fileSystemWatchers;
 
@@ -32,22 +33,11 @@ namespace m040102.FileSystem
                 throw new ArgumentException();
             }
 
-            this.patternsDictionary = patternsDictionary
+            this.patternDictionary = patternsDictionary
                 ?? throw new ArgumentNullException();
-
-            if (this.patternsDictionary.Select(p => p.Value)
-                .Any(d => !d.Exists))
-            {
-                throw new ArgumentException();
-            }
 
             this.defaultDirectory = defaultDirectory
                 ?? throw new ArgumentNullException();
-
-            if (!this.defaultDirectory.Exists)
-            {
-                throw new ArgumentException();
-            }
 
             #endregion
 
@@ -95,7 +85,7 @@ namespace m040102.FileSystem
             {
                 var file = new FileInfo(fileName);
 
-                var match = patternsDictionary.FirstOrDefault(
+                var match = patternDictionary.FirstOrDefault(
                     p => p.Key.IsMatch(file.Name))
                     .Value;
 
