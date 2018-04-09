@@ -16,7 +16,7 @@ namespace m040102.Logging
 
         public void Log(string str)
         {
-            this.writer.Write(str);
+            this.writer.WriteLine(str);
         }
     }
 }
