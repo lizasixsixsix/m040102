@@ -1,19 +1,17 @@
 ﻿using System.Configuration;
-using System.IO;
-using System.Text.RegularExpressions;
 
 namespace m040102.Configuration.Elements
 {
     public class RuleElement : ConfigurationElement
     {
         [ConfigurationProperty("fileNamePattern")]
-        public Regex FileNamePattern
+        public string FileNamePattern
             =>
-            new Regex((string)base["fileNamePattern"]);
+            (string)base["fileNamePattern"];
 
         [ConfigurationProperty("destinationPath")]
-        public DirectoryInfo DestinationPath
+        public string DestinationPath
             =>
-            new DirectoryInfo((string)base["destinationPath"]);
+            (string)base["destinationPath"];
     }
 }

@@ -4,7 +4,6 @@
     {
         public FileMover()
         {
-            // ConfigurationElementCollection can be used as a Dictionary
         }
     }
 }

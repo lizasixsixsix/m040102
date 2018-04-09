@@ -6,8 +6,8 @@ namespace m040102.Configuration.Elements
     public class DefaultDirectoryElement : ConfigurationElement
     {
         [ConfigurationProperty("path")]
-        public DirectoryInfo Path
+        public string Path
             =>
-            new DirectoryInfo((string)base["path"]);
+            (string)base["path"];
     }
 }
